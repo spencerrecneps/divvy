@@ -3,7 +3,7 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 import os
 
-uri = os.environ.get('DATABASE_URL', 'postgresql://gis:GIS01gis/divvy')
+uri = os.environ.get('DATABASE_URL', u'postgresql://gis:GIS01gis@localhost/divvy')
 engine = create_engine(uri, convert_unicode=True)
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
