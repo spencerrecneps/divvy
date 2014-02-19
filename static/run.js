@@ -1,8 +1,18 @@
 var stations = L.layerGroup();
 var tripLines = L.layerGroup();
 
-var map = L.mapbox.map('map', 'spencergardner.hab6b5i5')
-    	   .setView([41.873268,-87.662342], 13);
+/* Mapbox setup */
+//var map = L.mapbox.map('map', 'spencergardner.hab6b5i5')
+//    	   .setView([41.873268,-87.662342], 13);
+
+/* OSM setup */
+var map = new L.map('map');
+var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+var osm = new L.TileLayer(osmUrl, {minZoom: 13, maxZoom: 18});
+map.setView([41.873268,-87.662342], 13);
+map.addLayer(osm);
+
+//resume
 stations.addTo(map);
 tripLines.addTo(map);
 
@@ -37,10 +47,13 @@ function addStation(inData) {
 		});
 	})
 	*/
+	map.on('click', function(e) {
+		clearStationData();
+	});
 };
 
 function getTripLines(id) {
-	console.log(id);
+	//console.log(id);
 	
 	var filters = [{"name": "from_station_num", "op": "==", "val": id}];
 	$.ajax({
@@ -76,3 +89,7 @@ function getHourlyData(id) {
 	});
 }
 
+function clearStationData() {
+	tripLines.clearLayers();
+	d3.select("#chart").selectAll("svg").remove();
+}
