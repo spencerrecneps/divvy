@@ -56,8 +56,8 @@ function drawTripLines(lines) {
 	tripLines.clearLayers();
 	$.each(lines, function(idx, line) {
 		var l = L.polyline([L.latLng(line.from_lat,line.from_lon),L.latLng(line.to_lat,line.to_lon)], {
-			color: '#ff0032',
-			weight: line.count_trips^2/20000,
+			color: '#ef3b2c',
+			weight: line.count_trips^2/26000,
 			opacity: 0.5
 		});
 		
