@@ -69,9 +69,10 @@ class TripLines(Base):
     to_lat = Column(Float, nullable=False)
     to_lon = Column(Float, nullable=False)
     count_trips = Column(Integer, nullable=False)
+    line_weight = Column(Float)
     
     def __init__(self, from_station_num, to_station_num, from_lat, from_lon,
-                 to_lat, to_lon, count_trips):
+                 to_lat, to_lon, count_trips, line_weight):
         from_station_num = self.from_station_num
         to_station_num = self.to_station_num
         from_lat = self.from_lat
@@ -79,6 +80,7 @@ class TripLines(Base):
         to_lat = self.to_lat
         to_lon = self.to_lon
         count_trips = self.count_trips
+        line_weight = self.line_weight
         
     def __repr__(self):
         return '<Trip from station %r to station %r' % (self.from_station_num, self.to_station_num)
