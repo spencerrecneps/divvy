@@ -3,7 +3,7 @@ import flask
 from flask.ext import restless
 from flask.ext.restless import APIManager
 from database import db_session, init_db
-from models import Station, Trip
+from models import Station, Trip, TripLines, TripsByHour
 #from cherrypy import wsgiserver
 
 
@@ -34,9 +34,17 @@ manager = APIManager(app, session=db_session)
 
 # Create the API endpoints
 station_blueprint = manager.create_api(Station, 
-                                       methods=['GET', 'POST', 'DELETE'])
+                                       methods=['GET'],
+                                       max_results_per_page=-1)
 trip_blueprint = manager.create_api(Trip,
-                                       methods=['GET', 'POST', 'DELETE'])
+                                    methods=['GET'],
+                                    max_results_per_page=100)
+trip_lines_blueprint = manager.create_api(TripLines,
+                                          methods=['GET'],
+                                          max_results_per_page=-1)
+trips_by_hour_blueprint = manager.create_api(TripsByHour,
+                                             methods=['GET'],
+                                             max_results_per_page=-1)
 
 @app.teardown_appcontext
 def shutdown_session(exception=None):
@@ -55,3 +63,4 @@ if __name__ == '__main__':
 
 # test it at e.g.
 # http://0.0.0.0:5000/api/station
+# http://0.0.0.0:5000/static/index.html
