@@ -23,13 +23,23 @@
   			#legend { position:absolute; 
   					 bottom:5px; 
   					 left:5px; 
-  					 width:600px; 
+  					 width:700px; 
   					 background-color: rgba(255,255,240,.85); 
   					 border-radius: 10px; 
   					 z-index: 2 
   			}
+  			#chart { width: 80%; float: left}
+  			#bar { width: 20%; float: right}
   			#title { text-align:center; margin-top:10px; margin-bottom:10px; font-size:24px; font-family: 'Varela Round', sans-serif; }
   			p {margin-top: 0; margin-bottom: 0}
+  			.chart-label { font-size: 10px; font-family: 'Varela Round' }
+  			.bar-total {
+    			text-shadow:
+    			-2px -2px 0 #FFFFFF,
+    			2px -2px 0 #FFFFFF,
+    			-2px 2px 0 #FFFFFF,
+    			2px 2px 0 #FFFFFF;  
+			}
 		</style>
 	</head>
 	<body>
@@ -37,7 +47,7 @@
 		<div id='map'></div>
 		<div id='legend'>
 			<div id='title'><p>Divvy Usage</p></div>
-			<div id='chart'></div>
+			<div id='chart'></div><div id='bar'></div>
 		</div>
 		<script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.js'></script>
 		<link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet' />

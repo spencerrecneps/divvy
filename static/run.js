@@ -92,4 +92,5 @@ function getHourlyData(id) {
 function clearStationData() {
 	tripLines.clearLayers();
 	d3.select("#chart").selectAll("svg").remove();
+	d3.select("#bar").selectAll("svg").remove();
 }
