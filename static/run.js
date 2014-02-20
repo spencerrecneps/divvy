@@ -2,19 +2,26 @@ var stations = L.layerGroup();
 var tripLines = L.layerGroup();
 
 /* Mapbox setup */
-//var map = L.mapbox.map('map', 'spencergardner.hab6b5i5')
-//    	   .setView([41.873268,-87.662342], 13);
+var map = L.mapbox.map('map', 'spencergardner.hab6b5i5')
+    	   .setView([41.873268,-87.662342], 13);
 
 /* OSM setup */
-var map = new L.map('map');
+/*var map = new L.map('map');
 var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 var osm = new L.TileLayer(osmUrl, {minZoom: 13, maxZoom: 18});
 map.setView([41.873268,-87.662342], 13);
-map.addLayer(osm);
+map.addLayer(osm);*/
 
 //resume
 stations.addTo(map);
 tripLines.addTo(map);
+
+//make icon
+var bikeIcon = L.icon({
+	iconUrl: 'marker.svg',
+	iconSize: [60, 60],
+	iconAnchor: [30,45]
+}) 
 
 $.ajax({
 	type: 'GET',
@@ -28,7 +35,8 @@ $.ajax({
 function addStation(inData) {
 	$.each(inData, function(idx, val) {
 		var m = L.marker([val.latitude,val.longitude], {
-			title: val.name
+			title: val.name,
+			icon: bikeIcon
 		});
 		m.on('click', function(e) {
 			getTripLines(val.station_num);
@@ -69,7 +77,8 @@ function drawTripLines(lines) {
 	tripLines.clearLayers();
 	$.each(lines, function(idx, line) {
 		var l = L.polyline([L.latLng(line.from_lat,line.from_lon),L.latLng(line.to_lat,line.to_lon)], {
-			color: '#ef3b2c',
+			//color: '#ef3b2c',
+			color: '#FFFC19',
 			weight: line.line_weight,
 			opacity: 0.5
 		});

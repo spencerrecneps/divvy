@@ -12,7 +12,8 @@ function drawTripData(data) {
     legendElementWidth = gridSize * 2,
     buckets = 9,
     //colors = ["#ffffd9", "#edf8b1", "#c7e9b4", "#7fcdbb", "#41b6c4", "#1d91c0", "#225ea8", "#253494", "#081d58"], // alternatively colorbrewer.YlGnBu[9]
-    colors = ["#fff5f0", "#fee0d2", "#fcbba1", "#fc9272", "#fb6a4a", "#ef3b2c", "#cb181d", "#a50f15", "#67000d"],
+    //colors = ["#fff5f0", "#fee0d2", "#fcbba1", "#fc9272", "#fb6a4a", "#ef3b2c", "#cb181d", "#a50f15", "#67000d"],
+    colors = ["#f7fbff", "#deebf7", "#c6dbef", "#9ecae1", "#6baed6", "#4292c6", "#2171b5", "#08519c", "#08306b"],
     days = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
     times = ["12a", "1a", "2a", "3a", "4a", "5a", "6a", "7a", "8a", "9a", "10a", "11a", "12p", "1p", "2p", "3p", "4p", "5p", "6p", "7p", "8p", "9p", "10p", "11p"];
     
@@ -154,7 +155,7 @@ function drawAvgBar(raw) {
     .attr("width", 20)
     .attr("height", function (d) { return height * d.total / d.max } )
     .attr("transform", "translate(" + ( width + margin.left ) + "," + 190 + ") rotate(180)")
-    .style("fill", "#67000d");
+    .style("fill", "#2171b5");
 	
 	barChart.append("title").text(function (d) {
         return +d.total + " total trips";
