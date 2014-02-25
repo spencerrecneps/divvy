@@ -70,9 +70,10 @@ class TripLines(Base):
     to_lon = Column(Float, nullable=False)
     count_trips = Column(Integer, nullable=False)
     line_weight = Column(Float)
+    perc_station = Column(Float)    # percent of trips from a given station
     
     def __init__(self, from_station_num, to_station_num, from_lat, from_lon,
-                 to_lat, to_lon, count_trips, line_weight):
+                 to_lat, to_lon, count_trips, line_weight, perc_station):
         from_station_num = self.from_station_num
         to_station_num = self.to_station_num
         from_lat = self.from_lat
@@ -81,6 +82,7 @@ class TripLines(Base):
         to_lon = self.to_lon
         count_trips = self.count_trips
         line_weight = self.line_weight
+        perc_station = self.perc_station
         
     def __repr__(self):
         return '<Trip from station %r to station %r' % (self.from_station_num, self.to_station_num)

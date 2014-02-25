@@ -2,14 +2,30 @@ var stations = L.layerGroup();
 var tripLines = L.layerGroup();
 
 /* Mapbox setup */
-var map = L.mapbox.map('map', 'spencergardner.hab6b5i5')
-    	   .setView([41.873268,-87.662342], 13);
+var map = L.mapbox.map('map', 'spencergardner.hab6b5i5', {
+	maxBounds: L.latLngBounds([[41.50652,-88.370118],
+	                           [42.234618,-87.109437]
+	]),
+	center: [41.873268,-87.662342],
+	zoom: 13,
+	minZoom: 12,
+	maxZoom: 18
+})
+    	   //.setView([41.873268,-87.662342], 13);
 
-/* OSM setup */
-/*var map = new L.map('map');
+/* OSM setup *//*
+var map = new L.map('map',{
+	maxBounds: L.latLngBounds([[41.50652,-88.370118],
+	                           [42.234618,-87.109437]
+	]),
+	center: [41.873268,-87.662342],
+	zoom: 13,
+	minZoom: 12,
+	maxZoom: 18
+});
 var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-var osm = new L.TileLayer(osmUrl, {minZoom: 13, maxZoom: 18});
-map.setView([41.873268,-87.662342], 13);
+var osm = new L.TileLayer(osmUrl);//, {minZoom: 13, maxZoom: 18});
+//map.setView([41.873268,-87.662342], 13);
 map.addLayer(osm);*/
 
 //resume
